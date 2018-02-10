@@ -1,5 +1,6 @@
 Page({
     data: {
+        openId : "",
         list: [
           {
             id: 'storageRecord',
@@ -37,6 +38,34 @@ Page({
                 pages: ['searchbar']
             }
         ]
+    },
+    login : function(e) {
+      var that = this;
+      wx.login({
+        success: function (res) {
+          console.log("login:" + res.code);
+          console.log(res);
+          if (res.code) {
+            wx.getUserInfo({
+              success: function (res_user) {
+                wx.request({
+                  url: 'https://turtlebone.top/sns/jscode2session?appid=wxd18588d3eefb71e2&secret=750a90ba0151d3164185389a883f2f21&js_code=' + res.code + '&grant_type=authorization_code',
+                  method: 'GET',
+                  header: {
+                    'content-type': 'application/json'
+                  },
+                  success: function (getOpenIdRes) {
+                    console.log("get Result:");
+                    console.log(getOpenIdRes);
+                    that.setData({openId : getOpenIdRes.data.openid});
+                  }
+                })
+              }
+            });
+          }
+        }
+      });
+      
     },
     kindToggle: function (e) {
         var id = e.currentTarget.id, list = this.data.list;

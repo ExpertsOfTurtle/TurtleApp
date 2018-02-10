@@ -19,7 +19,7 @@ Page({
     queryTask : function () {
       var that = this;
       wx.request({
-        url: 'http://turtlebone.top/task/task/queryMyTask?tokenId=DFS',
+        url: 'https://turtlebone.top/task/task/queryMyTask?tokenId=DFS',
         header : {
           "Content-Type":"application/json"
         },
