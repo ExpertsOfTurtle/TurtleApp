@@ -1,0 +1,37 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">物品记录</view>
+        <view class="page__desc">记录生活中物品的摆放位置</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-cells__title">物品名字</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入物品名字" 
+                    value='{{objectName}}'
+                    bindinput="bindInputName" />
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells__title">物品位置</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入物品位置" 
+                    value='{{objectPosition}}'
+                    bindinput="bindInputPosition" />
+                </view>
+            </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell" wx:for="{{taskList}}" wx:for-item="item">
+                <view class="weui-cell__bd">{{item.title}}</view>
+                <view class="weui-cell__ft">{{item.id}}</view>
+            </view>
+        </view>
+         <view class="button-sp-area">
+             <button class="weui-btn mini-btn" type="primary" size="mini" bindtap="add">添加</button>
+         </view>
+    </view>
+</view>
