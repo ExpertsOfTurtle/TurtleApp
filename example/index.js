@@ -48,8 +48,10 @@ Page({
           if (res.code) {
             wx.getUserInfo({
               success: function (res_user) {
+                console.log("getUserInfo");
+                console.log(res_user);
                 wx.request({
-                  url: 'https://turtlebone.top/sns/jscode2session?appid=wxd18588d3eefb71e2&secret=750a90ba0151d3164185389a883f2f21&js_code=' + res.code + '&grant_type=authorization_code',
+                  url: 'http://localhost/auth/wechat/getOpenId?code=' + res.code,
                   method: 'GET',
                   header: {
                     'content-type': 'application/json'
